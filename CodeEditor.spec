@@ -1,17 +1,19 @@
 Summary:	Code Editor for Objective C
 Summary(pl):	Edytor kodu dla jêzyka Objective C
 Name:		CodeEditor
-Version:	0.4.1
+Version:	0.4.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://savannah.nongnu.org/download/codeeditor/CodeEditor.pkg/0.4.1/%{name}-%{version}.tar.gz
-# Source0-md5:	4906152cd85fe0bd8b61ae1b17db9323
+Source0:	http://savannah.nongnu.org/download/codeeditor/%{name}-%{version}.tar.gz
+# Source0-md5:	396cc3b9a51a7f045fe53800c98723e0
 URL:		http://www.nongnu.org/codeeditor/
 BuildRequires:	gnustep-gui-devel >= 0.8.7
 Requires:	gnustep-gui >= 0.8.7
 Requires:	%{name}-libs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define         _prefix         /usr/lib/GNUstep
 
 %define		libcombo	gnu-gnu-gnu
 %define		gsos		linux-gnu
@@ -21,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
 %define		gscpu		%{_target_cpu}
 %endif
-%define appdir     %{_libdir}/GNUstep/System/Applications/CodeEditor.app
-%define supportdir %{_libdir}/GNUstep/System/Library/ApplicationSupport/CodeEditorView
+%define appdir     %{_prefix}/System/Applications/CodeEditor.app
+%define supportdir %{_prefix}/System/Library/ApplicationSupport/CodeEditorView
 
 %description
 CodeEditor is a programmer's editor and library for GNUstep.
@@ -54,20 +56,20 @@ CodeEditorView bundle headers.
 Pliki nag³ówkowe paczki CodeEditorView.
 
 %prep
-%setup -q -n codeeditor
+%setup -q -n CodeEditor
 
 %build
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
+. %{_prefix}/System/Library/Makefiles/GNUstep.sh
 %{__make} \
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
 
 %install
 rm -rf $RPM_BUILD_ROOT
-. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
+. %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep/System
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -91,6 +93,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
+%dir %{_prefix}/System/Library/Bundles/CodeEditorView.bundle
+%dir %{_prefix}/System/Library/Bundles/CodeEditorView.bundle/%{gscpu}
+%dir %{_prefix}/System/Library/Bundles/CodeEditorView.bundle/%{gscpu}/%{gsos}
+%dir %{_prefix}/System/Library/Bundles/CodeEditorView.bundle/%{gscpu}/%{gsos}/%{libcombo}
+%{_prefix}/System/Library/Bundles/CodeEditorView.bundle/%{gscpu}/%{gsos}/%{libcombo}/CodeEditorView
+%dir %{_prefix}/System/Library/Bundles/CodeEditorView.bundle/Resources
+%{_prefix}/System/Library/Bundles/CodeEditorView.bundle/Resources/OpenInWorkspace.tiff
+%{_prefix}/System/Library/Bundles/CodeEditorView.bundle/Resources/Info-gnustep.plist
 %dir %{supportdir}
 %dir %{supportdir}/ObjCHandler.bundle
 %dir %{supportdir}/ObjCHandler.bundle/Resources
@@ -100,6 +110,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}
 %{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}/ObjCHandler
 
-%files devel
-%defattr(644,root,root,755)
-%{_libdir}/GNUstep/System/Library/Headers/CodeEditorView
+#%files devel
+#%defattr(644,root,root,755)
+#%{_prefix}/System/Library/Headers/CodeEditorView

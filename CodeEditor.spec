@@ -10,10 +10,10 @@ Source0:	http://savannah.nongnu.org/download/codeeditor/%{name}-%{version}.tar.g
 URL:		http://www.nongnu.org/codeeditor/
 BuildRequires:	gnustep-gui-devel >= 0.8.7
 Requires:	gnustep-gui >= 0.8.7
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/lib/GNUstep
+%define         _prefix         /usr/%{_lib}/GNUstep
 
 %define		libcombo	gnu-gnu-gnu
 %define		gsos		linux-gnu
@@ -47,7 +47,7 @@ Paczka CodeEditorView do osadzania CodeEditora w innych aplikacjach.
 Summary:	CodeEditorView bundle headers
 Summary(pl):	Pliki nag³ówkowe paczki CodeEditorView
 Group:		Development/Tools
-Requires:	%{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 CodeEditorView bundle headers.

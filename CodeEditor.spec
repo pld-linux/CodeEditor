@@ -12,8 +12,6 @@ Requires:	gnustep-gui >= 0.8.7
 Requires:	%{name}-libs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/lib/GNUstep
-
 %define		libcombo	gnu-gnu-gnu
 %define		gsos		linux-gnu
 %ifarch %{ix86}
@@ -22,13 +20,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
 %define		gscpu		%{_target_cpu}
 %endif
+%define appdir     %{_libdir}/GNUstep/System/Applications/CodeEditor.app
+%define supportdir %{_libdir}/GNUstep/System/Library/ApplicationSupport/CodeEditorView
 
 %description
-This is CodeEditor, a simple image viewer application for GNUstep.
-
-%description -l pl
-To jest CodeEditor - prosta przegl±darka obrazków dla ¶rodowiska
-GNUstep.
+This is CodeEditor, a programmer's editor and library for GNUstep
 
 %package libs
 Summary:	CodeEditorView bundle
@@ -66,26 +62,26 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README TODO
-%dir %{_prefix}/System/Applications/CodeEditor.app
-%attr(755,root,root) %{_prefix}/System/Applications/CodeEditor.app/CodeEditor
-%dir %{_prefix}/System/Applications/CodeEditor.app/Resources
-%{_prefix}/System/Applications/CodeEditor.app/Resources/*.desktop
-%{_prefix}/System/Applications/CodeEditor.app/Resources/*.plist
-%{_prefix}/System/Applications/CodeEditor.app/Resources/*.tiff
-%{_prefix}/System/Applications/CodeEditor.app/Resources/*.gorm
-%{_prefix}/System/Applications/CodeEditor.app/Resources/Scripts
-%dir %{_prefix}/System/Applications/CodeEditor.app/%{gscpu}
-%dir %{_prefix}/System/Applications/CodeEditor.app/%{gscpu}/%{gsos}
-%dir %{_prefix}/System/Applications/CodeEditor.app/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{_prefix}/System/Applications/CodeEditor.app/%{gscpu}/%{gsos}/%{libcombo}/CodeEditor
-%{_prefix}/System/Applications/CodeEditor.app/%{gscpu}/%{gsos}/%{libcombo}/*.openapp
+%dir %{appdir}
+%attr(755,root,root) %{appdir}/CodeEditor
+%dir %{appdir}/Resources
+%{appdir}/Resources/*.desktop
+%{appdir}/Resources/*.plist
+%{appdir}/Resources/*.tiff
+%{appdir}/Resources/*.gorm
+%{appdir}/Resources/Scripts
+%dir %{appdir}/%{gscpu}
+%dir %{appdir}/%{gscpu}/%{gsos}
+%dir %{appdir}/%{gscpu}/%{gsos}/%{libcombo}
+%attr(755,root,root) %{appdir}/%{gscpu}/%{gsos}/%{libcombo}/CodeEditor
+%{appdir}/%{gscpu}/%{gsos}/%{libcombo}/*.openapp
 
 %files libs
 %defattr(644,root,root,755)
-%dir %{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle
-%{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle/Resources/*.plist
-%{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}/ObjCHandler
+%dir %{supportdir}/ObjCHandler.bundle
+%{supportdir}/ObjCHandler.bundle/Resources/*.plist
+%{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}/ObjCHandler
 
 %files devel
 %defattr(644,root,root,755)
-%{_prefix}/System/Library/Headers/CodeEditorView/*.h
+%{_libdir}/GNUstep/System/Library/Headers/CodeEditorView/*.h

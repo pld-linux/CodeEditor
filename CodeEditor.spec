@@ -4,12 +4,12 @@ Version:	0.4.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://savannah.nongnu.org/download/codeeditor/CodeEditor.pkg/0.4.1/CodeEditor-0.4.1.tar.gz
+Source0:	http://savannah.nongnu.org/download/codeeditor/CodeEditor.pkg/0.4.1/%{name}-%{version}.tar.gz
 # Source0-md5:	4906152cd85fe0bd8b61ae1b17db9323
 URL:		http://www.nongnu.org/codeeditor/
 BuildRequires:	gnustep-gui-devel >= 0.8.7
 Requires:	gnustep-gui >= 0.8.7
-Requires: %{name}-libs = %{version}
+Requires:	%{name}-libs = %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _prefix         /usr/lib/GNUstep
@@ -31,15 +31,15 @@ To jest CodeEditor - prosta przegl±darka obrazków dla ¶rodowiska
 GNUstep.
 
 %package libs
-Summary: CodeEditorView bundle
-Group: Development/Tools
+Summary:	CodeEditorView bundle
+Group:		Development/Tools
 
 %description libs
 CodeEditorView bundle for embedding CodeEditor in other apps
 
 %package devel
-Summary: CodeEditorView bundle headers
-Group: Development/Tools
+Summary:	CodeEditorView bundle headers
+Group:		Development/Tools
 
 %description devel
 CodeEditorView bundle headers
@@ -81,9 +81,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/System/Applications/CodeEditor.app/%{gscpu}/%{gsos}/%{libcombo}/*.openapp
 
 %files libs
+%defattr(644,root,root,755)
 %dir %{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle
 %{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle/Resources/*.plist
 %{_prefix}/System/Library/ApplicationSupport/CodeEditorView/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}/ObjCHandler
 
 %files devel
+%defattr(644,root,root,755)
 %{_prefix}/System/Library/Headers/CodeEditorView/*.h

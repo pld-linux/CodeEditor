@@ -44,7 +44,7 @@ CodeEditorView bundle headers
 %setup -q -n codeeditor
 
 %build
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
 %{__make} \
 	OPTFLAG="%{rpmcflags}" \
 	messages=yes
@@ -54,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
-	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_prefix}/System
+	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep/System
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -63,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README TODO
 %dir %{appdir}
-%attr(755,root,root) %{appdir}/CodeEditor
+%attr(755,root,root) %{appdir}/%{name}
 %dir %{appdir}/Resources
 %{appdir}/Resources/*.desktop
 %{appdir}/Resources/*.plist
@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{appdir}/%{gscpu}
 %dir %{appdir}/%{gscpu}/%{gsos}
 %dir %{appdir}/%{gscpu}/%{gsos}/%{libcombo}
-%attr(755,root,root) %{appdir}/%{gscpu}/%{gsos}/%{libcombo}/CodeEditor
+%attr(755,root,root) %{appdir}/%{gscpu}/%{gsos}/%{libcombo}/%{name}
 %{appdir}/%{gscpu}/%{gsos}/%{libcombo}/*.openapp
 
 %files libs

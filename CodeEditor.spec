@@ -1,4 +1,5 @@
 Summary:	Code Editor for Objective C
+Summary(pl):	Edytor kodu dla jêzyka Objective C
 Name:		CodeEditor
 Version:	0.4.1
 Release:	1
@@ -24,21 +25,33 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define supportdir %{_libdir}/GNUstep/System/Library/ApplicationSupport/CodeEditorView
 
 %description
-This is CodeEditor, a programmer's editor and library for GNUstep
+This is CodeEditor, a programmer's editor and library for GNUstep.
+
+%description -l pl
+To jest CodeEditor - edytor programisty oraz biblioteka dla GNUstepa.
 
 %package libs
 Summary:	CodeEditorView bundle
+Summary(pl):	Paczka CodeEditorView
 Group:		Development/Tools
 
 %description libs
-CodeEditorView bundle for embedding CodeEditor in other apps
+CodeEditorView bundle for embedding CodeEditor in other apps.
+
+%description libs -l pl
+Paczka CodeEditorView do osadzania CodeEditora w innych aplikacjach.
 
 %package devel
 Summary:	CodeEditorView bundle headers
+Summary(pl):	Pliki nag³ówkowe paczki CodeEditorView
 Group:		Development/Tools
+Requires:	%{name}-libs = %{version}
 
 %description devel
-CodeEditorView bundle headers
+CodeEditorView bundle headers.
+
+%description devel -l pl
+Pliki nag³ówkowe paczki CodeEditorView.
 
 %prep
 %setup -q -n codeeditor
@@ -51,7 +64,7 @@ CodeEditorView bundle headers
 
 %install
 rm -rf $RPM_BUILD_ROOT
-. %{_prefix}/System/Library/Makefiles/GNUstep.sh
+. %{_libdir}/GNUstep/System/Library/Makefiles/GNUstep.sh
 
 %{__make} install \
 	GNUSTEP_INSTALLATION_DIR=$RPM_BUILD_ROOT%{_libdir}/GNUstep/System
@@ -78,10 +91,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files libs
 %defattr(644,root,root,755)
+%dir %{supportdir}
 %dir %{supportdir}/ObjCHandler.bundle
+%dir %{supportdir}/ObjCHandler.bundle/Resources
 %{supportdir}/ObjCHandler.bundle/Resources/*.plist
+%dir %{supportdir}/ObjCHandler.bundle/%{gscpu}
+%dir %{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}
+%dir %{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}
 %{supportdir}/ObjCHandler.bundle/%{gscpu}/%{gsos}/%{libcombo}/ObjCHandler
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/GNUstep/System/Library/Headers/CodeEditorView/*.h
+%{_libdir}/GNUstep/System/Library/Headers/CodeEditorView

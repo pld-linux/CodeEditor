@@ -13,7 +13,7 @@ Requires:	gnustep-gui >= 0.8.7
 Requires:	%{name}-libs = %{version}-%{release}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define         _prefix         /usr/%{_lib}/GNUstep
+%define		_prefix		/usr/%{_lib}/GNUstep
 
 %define		libcombo	gnu-gnu-gnu
 %define		gsos		linux-gnu
@@ -23,8 +23,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
 %define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
 %endif
-%define appdir     %{_prefix}/System/Applications/CodeEditor.app
-%define supportdir %{_prefix}/System/Library/ApplicationSupport/CodeEditorView
+%define		appdir		%{_prefix}/System/Applications/CodeEditor.app
+%define		supportdir	%{_prefix}/System/Library/ApplicationSupport/CodeEditorView
 
 %description
 CodeEditor is a programmer's editor and library for GNUstep.

@@ -25,10 +25,10 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define supportdir %{_libdir}/GNUstep/System/Library/ApplicationSupport/CodeEditorView
 
 %description
-This is CodeEditor, a programmer's editor and library for GNUstep.
+CodeEditor is a programmer's editor and library for GNUstep.
 
 %description -l pl
-To jest CodeEditor - edytor programisty oraz biblioteka dla GNUstepa.
+CodeEditor jest edytorem programisty i bibliotek± dla GNUstepa.
 
 %package libs
 Summary:	CodeEditorView bundle

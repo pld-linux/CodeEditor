@@ -2,7 +2,7 @@ Summary:	Code Editor for Objective C
 Summary(pl):	Edytor kodu dla jêzyka Objective C
 Name:		CodeEditor
 Version:	0.4.4
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications
 Source0:	http://savannah.nongnu.org/download/codeeditor/%{name}-%{version}.tar.gz
@@ -21,7 +21,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		gscpu		ix86
 %else
 # also s/alpha.*/alpha/, but we use only "alpha" arch for now
-%define		gscpu		%{_target_cpu}
+%define		gscpu		%(echo %{_target_cpu} | sed -e 's/amd64/x86_64/;s/ppc/powerpc/')
 %endif
 %define appdir     %{_prefix}/System/Applications/CodeEditor.app
 %define supportdir %{_prefix}/System/Library/ApplicationSupport/CodeEditorView

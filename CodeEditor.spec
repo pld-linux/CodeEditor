@@ -2,7 +2,7 @@ Summary:	Code Editor for Objective C
 Summary(pl):	Edytor kodu dla jêzyka Objective C
 Name:		CodeEditor
 Version:	0.4.4
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications
 Source0:	http://savannah.nongnu.org/download/codeeditor/%{name}-%{version}.tar.gz

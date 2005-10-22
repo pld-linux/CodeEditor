@@ -1,0 +1,19 @@
+--- CodeEditor/CodeEditor/main.m.orig	2003-10-09 17:06:06.000000000 +0200
++++ CodeEditor/CodeEditor/main.m	2005-10-22 15:37:45.238113904 +0200
+@@ -21,10 +21,15 @@
+ */
+ 
+ #include <AppKit/AppKit.h>
++#include <Foundation/NSProcessInfo.h>
+ #include "DocumentController.h"
+ 
+-int main(int argc, const char *argv[]) 
++int main(int argc, const char *argv[], char *env[]) 
+ {
++#ifdef GS_PASS_ARGUMENTS
++  [NSProcessInfo initializeWithArguments: (char**)argv count: argc environment: env];
++#endif
++
+   NSAutoreleasePool *pool = [NSAutoreleasePool new];
+   DocumentController *controller = [DocumentController sharedDocumentController];
+   [NSApplication sharedApplication];

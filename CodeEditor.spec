@@ -2,11 +2,12 @@ Summary:	Code Editor for Objective C
 Summary(pl):	Edytor kodu dla jêzyka Objective C
 Name:		CodeEditor
 Version:	0.4.4
-Release:	4
+Release:	5
 License:	GPL
 Group:		X11/Applications
 Source0:	http://savannah.nongnu.org/download/codeeditor/%{name}-%{version}.tar.gz
 # Source0-md5:	396cc3b9a51a7f045fe53800c98723e0
+Patch0:		%{name}-pass-arguments.patch
 URL:		http://www.nongnu.org/codeeditor/
 BuildRequires:	gnustep-gui-devel >= 0.8.7
 Requires:	gnustep-gui >= 0.8.7
@@ -57,6 +58,7 @@ Pliki nag³ówkowe paczki CodeEditorView.
 
 %prep
 %setup -q -n CodeEditor
+%patch0 -p1
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh

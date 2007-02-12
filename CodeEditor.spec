@@ -1,5 +1,5 @@
 Summary:	Code Editor for Objective C
-Summary(pl):	Edytor kodu dla jêzyka Objective C
+Summary(pl.UTF-8):   Edytor kodu dla jÄ™zyka Objective C
 Name:		CodeEditor
 Version:	0.4.4
 Release:	5
@@ -30,31 +30,31 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 CodeEditor is a programmer's editor and library for GNUstep.
 
-%description -l pl
-CodeEditor jest edytorem programisty i bibliotek± dla GNUstepa.
+%description -l pl.UTF-8
+CodeEditor jest edytorem programisty i bibliotekÄ… dla GNUstepa.
 
 %package libs
 Summary:	CodeEditorView bundle
-Summary(pl):	Paczka CodeEditorView
+Summary(pl.UTF-8):   Paczka CodeEditorView
 Group:		Development/Tools
 
 %description libs
 CodeEditorView bundle for embedding CodeEditor in other apps.
 
-%description libs -l pl
+%description libs -l pl.UTF-8
 Paczka CodeEditorView do osadzania CodeEditora w innych aplikacjach.
 
 %package devel
 Summary:	CodeEditorView bundle headers
-Summary(pl):	Pliki nag³ówkowe paczki CodeEditorView
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe paczki CodeEditorView
 Group:		Development/Tools
 Requires:	%{name}-libs = %{version}-%{release}
 
 %description devel
 CodeEditorView bundle headers.
 
-%description devel -l pl
-Pliki nag³ówkowe paczki CodeEditorView.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe paczki CodeEditorView.
 
 %prep
 %setup -q -n CodeEditor

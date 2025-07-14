@@ -58,7 +58,7 @@ Pliki nagłówkowe paczki CodeEditorView.
 
 %prep
 %setup -q -n CodeEditor
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 . %{_prefix}/System/Library/Makefiles/GNUstep.sh
